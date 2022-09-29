@@ -15,7 +15,7 @@ public class Main {
     }
     static void dz2_2(){
         Scanner in=new Scanner(System.in);
-        int n=in.nextInt();
+        long n=in.nextLong();
         long krol=11, volk=2, syed=0;
         for (int i=1;i<=n;++i){
             if(i%2==1){
@@ -24,6 +24,7 @@ public class Main {
             else{
                 if (krol<volk*10){
                     volk=krol/10;
+                    krol-=volk*10;
                 }
                 else{
                     krol-=volk*10;
@@ -35,8 +36,7 @@ public class Main {
                 syed%=70;
             }
             if (krol>19000000){
-                System.out.println("Слишком много кролей");
-                break;
+                krol=19000000;
             }
         }
         System.out.println(krol+" "+volk);
@@ -84,7 +84,7 @@ public class Main {
     public static void main(String[] args) {
         //My second homework
         //dz2_1();
-        //dz2_2();
+        dz2_2();
         //dz2_3();
         //dz2_4();
     }
