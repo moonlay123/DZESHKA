@@ -84,7 +84,7 @@ public class Main {
     public static void main(String[] args) {
         //My second homework
         //dz2_1();
-        dz2_2();
+        //dz2_2();
         //dz2_3();
         //dz2_4();
     }
