@@ -1,63 +1,91 @@
+import java.sql.SQLOutput;
 import java.util.Locale;
 import java.util.Scanner;
 import static java.lang.Math.abs;
 
 public class Main {
-    static void dz1_1(){
+    static void dz2_1(){
+        Scanner in = new Scanner(System.in);
+        int n=in.nextInt(), fn1=1, fn2=1;
+        for (int i=0;i<n-2;i++){
+            fn2+=fn1;
+            fn1=fn2-fn1;
+        }
+        System.out.println(fn2);
+    }
+    static void dz2_2(){
         Scanner in=new Scanner(System.in);
         int n=in.nextInt();
-        System.out.println(n%10+n/10%10+n/100);
-        System.out.println(n+2-n%2);
+        long krol=11, volk=2, syed=0;
+        for (int i=1;i<=n;++i){
+            if(i%2==1){
+                krol*=3;
+            }
+            else{
+                if (krol<volk*10){
+                    volk=krol/10;
+                }
+                else{
+                    krol-=volk*10;
+                }
+                syed+=volk*10;
+            }
+            if (syed>=70){
+                volk+=syed/70;
+                syed%=70;
+            }
+            if (krol>19000000){
+                System.out.println("Слишком много кролей");
+                break;
+            }
+        }
+        System.out.println(krol+" "+volk);
     }
-    static void dz1_2(){
+    static void dz2_3(){
         Scanner in=new Scanner(System.in);
-        int a=in.nextInt(), b=in.nextInt();
-        System.out.println(a+b/100 + " " + b%100);
+        int n=in.nextInt();
+        String ans=String.valueOf(n);
+        if (n>=11 && n<=20){
+            ans+=" TORTOV";
+        }
+        else {
+            switch (n % 10) {
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 0:
+                    ans += " TORTOV";
+                    break;
+                case 1:
+                    ans+=" TORT";
+                    break;
+                case 3:
+                case 4:
+                case 2:
+                    ans+=" TORTA";
+                    break;
+            }
+        }
+        System.out.println(ans);
     }
-    static void dz1_3(){
-        Scanner in =new Scanner(System.in);
-        int a=in.nextInt();
-        System.out.print(a/3600+":");
-        if (a/60%60<10){
-            System.out.print("0"+a/60%60+":");
+    static void dz2_4(){
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt(), min=9;
+        while (n>0 && min!=1){
+            if (n%10<min && n%10!=0) {
+                min = n % 10;
+            }
+            n/=10;
         }
-        else{
-            System.out.print(a/60%60+":");
-        }
-        if (a%3600<10){
-            System.out.print("0"+a%60);
-        }
-        else{
-            System.out.print(a%60);
-        }
-    }
-    static void dz1_4(){
-        Scanner in=new Scanner(System.in).useLocale(Locale.ENGLISH);
-        float a=in.nextFloat();
-        System.out.println(!(a>=-2 && a<=3 || a<=9 && a>=6));
-    }
-    static void dz1_5(){
-        Scanner in =new Scanner(System.in);
-        int a =in.nextInt(),b=in.nextInt(),c=in.nextInt();
-        System.out.println(abs(a)>=100 && abs(a)<=999 && a%5==0 && abs(b)>=100 && abs(b)<=999 && b%5==0 || abs(c)>=100 && abs(c)<=999 && c%5==0 && abs(b)>=100 && abs(b)<=999 && b%5==0 || abs(a)>=100 && abs(a)<=999 && a%5==0 && abs(c)>=100 && abs(c)<=999 && c%5==0);
-    }
-    static void dz1_6(){
-        Scanner in =new Scanner(System.in).useLocale(Locale.ENGLISH);
-        float x=in.nextFloat(), y=in.nextFloat();
-        if (y>=0 && y<=2-x*x || y<0 && y<=2-x*x && y>=x){
-            System.out.println("YES");
-        }
-        else{
-            System.out.println("NO");
-        }
+        System.out.println(min);
     }
     public static void main(String[] args) {
-        // My first homework
-        // dz1_1();
-        // dz1_2();
-        // dz1_3();
-        // dz1_4();
-        // dz1_5();
-        // dz1_6();
+        //My second homework
+        //dz2_1();
+        //dz2_2();
+        //dz2_3();
+        //dz2_4();
     }
 }
