@@ -4,88 +4,111 @@ import java.util.Scanner;
 import static java.lang.Math.abs;
 
 public class Main {
-    static void dz2_1(){
+    static void dz3_1(){
         Scanner in = new Scanner(System.in);
-        int n=in.nextInt(), fn1=1, fn2=1;
-        for (int i=0;i<n-2;i++){
-            fn2+=fn1;
-            fn1=fn2-fn1;
-        }
-        System.out.println(fn2);
-    }
-    static void dz2_2(){
-        Scanner in=new Scanner(System.in);
-        long n=in.nextLong();
-        long krol=11, volk=2, syed=0;
-        for (int i=1;i<=n;++i){
-            if(i%2==1){
-                krol*=3;
+        int n=in.nextInt(), quqle=in.nextInt();
+        String s=new String("");
+        while(n>0){
+            if (n%10==quqle){
+                n/=10;
+                continue;
             }
-            else{
-                if (krol<volk*10){
-                    volk=krol/10;
-                    krol-=volk*10;
-                }
-                else{
-                    krol-=volk*10;
-                }
-                syed+=volk*10;
-            }
-            if (syed>=70){
-                volk+=syed/70;
-                syed%=70;
-            }
-            if (krol>19000000){
-                krol=19000000;
-            }
-        }
-        System.out.println(krol+" "+volk);
-    }
-    static void dz2_3(){
-        Scanner in=new Scanner(System.in);
-        int n=in.nextInt();
-        String ans=String.valueOf(n);
-        if (n>=11 && n<=20){
-            ans+=" TORTOV";
-        }
-        else {
-            switch (n % 10) {
-                case 5:
-                case 6:
-                case 7:
-                case 8:
-                case 9:
-                case 0:
-                    ans += " TORTOV";
-                    break;
-                case 1:
-                    ans+=" TORT";
-                    break;
-                case 3:
-                case 4:
-                case 2:
-                    ans+=" TORTA";
-                    break;
-            }
-        }
-        System.out.println(ans);
-    }
-    static void dz2_4(){
-        Scanner in=new Scanner(System.in);
-        int n=in.nextInt(), min=9;
-        while (n>0 && min!=1){
-            if (n%10<min && n%10!=0) {
-                min = n % 10;
-            }
+            s=String.valueOf(n%10) +s;
             n/=10;
         }
-        System.out.println(min);
+        System.out.println(s);
+    }
+    static void dz3_2(){
+        Scanner in = new Scanner(System.in);
+        int n=in.nextInt(),i=0;
+        if (n==0){
+            System.out.println(0);
+        }
+        if (n<0){
+            n=-n;
+            System.out.print('-');
+        }
+        while(n>0){
+            if ( i==0 && n%10==0 ){
+                i=1;
+                n/=10;
+                continue;
+            }
+            System.out.print(n%10);
+            n/=10;
+        }
+    }
+    static void  dz3_3_mas(){
+        Scanner in =new Scanner(System.in);
+        int n=in.nextInt(),k=-1;
+        int[] v =new int[n];
+        for (int i=0;i<n;++i){
+            v[i]=in.nextInt();
+        }
+        for (int q=0;q<n;++q){
+            if (k==-1 && v[q]>0){
+                k=v[q];
+            }
+            else if (v[q]>0 && v[q]<k){
+                k=v[q];
+            }
+        }
+        System.out.println(k);
+    }
+    static void dz3_3_without_mas(){
+        Scanner in =new Scanner(System.in);
+        int n=in.nextInt(),i=-1,z=0;
+        for (int q=0;q<n;++q){
+            z=in.nextInt();
+            if (i==-1 && z>0){
+                i=z;
+            }
+            else if (z>0 && z<i){
+                i=z;
+            }
+        }
+        System.out.println(i);
+    }
+    static void dz3_4_without_mas(){
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt(),last=0,z;
+        for (int i=0;i<n;i++){
+            z=in.nextInt();
+            if (i==0){
+                last=z;
+                continue;
+            }
+            if (z>last){
+                System.out.print(z+" ");
+            }
+            last=z;
+        }
+    }
+    static void dz3_4_mas(){
+        Scanner in=new Scanner(System.in);
+        int n=in.nextInt(),last=0;
+        int[] v=new int[n];
+        for (int i=0;i<n;++i){
+            v[i]=in.nextInt();
+        for (i=0;i<n;++i){
+            if (i==0){
+                last=v[i];
+                continue;
+            }
+            if (v[i]>last){
+                System.out.print(v[i]+" ");
+            }
+            last=v[i];
+        }
+    }
     }
     public static void main(String[] args) {
-        //My second homework
-        //dz2_1();
-        //dz2_2();
-        //dz2_3();
-        //dz2_4();
+        //My cringe homework
+        //dz3_1();
+        //dz3_2();
+        //dz3_3_mas();
+        //dz3_3_without_mas();
+        //dz3_4_without_mas();
+        //dz3_4_mas();
     }
 }
