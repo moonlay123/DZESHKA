@@ -10,7 +10,7 @@ public class Homework_6 {
             a[i/8]=(byte)(a[i/8] | (t << (i%8)));
         }
         for (int i=0;i<n;i++){
-            System.out.print((((a[i/8] & (1 << (i%8))) >> (i%8))==1? "true" : "false") + " ");
+            System.out.print((((a[i/8] & (1 << (i%8))) >> (i%8))==1) + " ");
         }
     }
 }
