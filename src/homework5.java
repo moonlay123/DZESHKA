@@ -100,5 +100,10 @@ public class homework5 {
         // dz5_1();
         // dz5_2();
         // dz5_3();
+        char i = 0;
+        while (i <= 65535) {
+            System.out.println(i);
+            i++;
+        }
     }
 }
